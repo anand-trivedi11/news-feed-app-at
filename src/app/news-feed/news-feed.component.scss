@@ -1,0 +1,72 @@
+.news-app-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #353535;
+
+  .app-is-mobile .main-toolbar {
+    position: fixed;
+
+    z-index: 2;
+  }
+
+  h1.app-name {
+    margin-left: 8px;
+  }
+
+  .sidenav-container {
+    flex: 1;
+    background: inherit;
+  }
+
+  .app-is-mobile .sidenav-container {
+    flex: 1 0 auto;
+  }
+  .content-image {
+    float: right;
+    z-index: 1;
+  }
+  .content-text {
+    float: left;
+  }
+
+  .card-parent {
+    background: #1f2025;
+    color: white;
+
+    .card-content {
+      float: left;
+    }
+
+    .source-name {
+      color: white;
+    }
+  }
+  .mt-icons {
+    font-size: 14px;
+  }
+  .mat-drawer-inner-container,
+  .nav-list {
+    background: #353535;
+    color: white !important;
+  }
+  .mat-list-item-content {
+    color: white;
+  }
+  .hr-class,
+  .mat-list-item-content:hover {
+    background: #3f51b5;
+  }
+
+  .image-content {
+    text-align: center;
+  }
+ 
+  .article-spacing {
+    word-break: break-all;
+  }
+}

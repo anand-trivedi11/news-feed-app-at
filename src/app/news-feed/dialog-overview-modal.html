@@ -1,0 +1,18 @@
+<!-- Modal Title-->
+<a href="{{data.url}}" target="_blank">
+    <h1 mat-dialog-title>{{data.title}}</h1>
+</a>
+<!-- Author and Date-->
+<mat-card-subtitle class="dialog-subtitle">{{data.author || "Author"}} , {{data.publishedAt}}</mat-card-subtitle>
+<div mat-dialog-content>
+    <!-- Image-->
+    <div class="image-content col-12">
+        <img src="{{data.urlToImage}}" class="col-12" alt="No Image Available">
+    </div>
+    <!-- Content ( If Content not found Replace with Description-->
+    <p>{{data.content || data.description}}</p>
+</div>
+<div mat-dialog-actions>
+    <!--Exit Modal-->
+    <button mat-raised-button color="primary" (click)="onNoClick()">Exit</button>
+</div>

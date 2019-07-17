@@ -1,0 +1,67 @@
+<div class="news-app-container" [class.app-is-mobile]="mobileQuery.matches">
+  <!--Navbar-->
+  <div class="navbar-parent">
+    <mat-toolbar color="primary" class="main-toolbar col-12">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="app-name">News Widgets App</h1>
+    </mat-toolbar>
+  </div>
+  <!--Navbar Ends-->
+  <!--Main Container with SideNav-->
+  <mat-sidenav-container class="sidenav-container ">
+    <!-- SideNav-->
+    <mat-sidenav #snav [mode]="'over'" fixedTopGap="80">
+      <mat-nav-list class="nav-list">   
+        <br>
+        <!-- Search Function-->
+        <p class="ml-3 mt-4">Search</p>
+        <hr class="hr-class">
+        <mat-form-field appearance="legacy" class="ml-3">
+
+          <input matInput placeholder="" type="text" [(ngModel)]="term">
+          <mat-icon matSuffix class="mt-icons">search</mat-icon>
+        </mat-form-field>
+        <br>
+        <!-- Filter Function-->
+        <mat-label class="ml-3 mb-3">Filter</mat-label>
+        <br>
+        <hr class="hr-class">
+        <a mat-list-item routerLink="." *ngFor="let source of mSources" (click)="filterArticles(source.source.id)"
+          class="nav-list-content">{{source.source.name}}</a>
+        <!-- Reset Filter Function-->
+        <button mat-raised-button color="primary" class="ml-3 mt-3" (click)="resetFilter()">Reset Filter</button>
+      </mat-nav-list>
+    </mat-sidenav>
+    <!-- SideNav Ends-->
+    <!-- Main Content-->
+    <mat-sidenav-content>
+      <div class="container">
+        <!-- News Cards-->
+        <mat-card class="card-parent mb-4 mt-4" *ngFor="let article of mArticles | filter:term">
+          <div>
+            <mat-card-header>
+              <mat-card-subtitle class="source-name">{{article.source.name}}</mat-card-subtitle>
+              <mat-card-title>{{article.title}}</mat-card-title>
+            </mat-card-header>
+            <!-- Card Content-->
+            <mat-card-content class="card-content">
+              <p class="article-spacing ml-3">{{article.description}}</p>
+            </mat-card-content>
+            <!-- Card Image and Link-->
+            <img src="{{article.urlToImage}}" class="col-12" alt="No Image Available.">
+            <a href="{{article.url}}" class="ml-3 article-spacing">{{article.url}}</a>
+          </div>
+          <div class="mt-1 ml-3">
+            <!-- Expand News-->
+            <button mat-raised-button color="primary" (click)="openDialog(article)">Expand News</button>
+          </div>
+        </mat-card>
+        <!-- News Cards Ends-->
+      </div>
+    </mat-sidenav-content>
+    <!-- Main Content Ends-->
+  </mat-sidenav-container>
+  <!--Main Container with SideNav Ends-->
+</div>
